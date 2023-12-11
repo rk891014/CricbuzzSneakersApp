@@ -39,6 +39,7 @@ object SneakersManager {
             if(cartDataMap.containsKey(sneaker.id))
                 return "Item AllReady Added"
             else {
+                sneaker.alreadyAddedToCart = true
                 cartDataMap[sneaker.id] = SneakerCart(sneaker, 1)
                 sharedPreferences.edit().putString("myCart", gson.toJson(cartDataMap)).apply()
             }

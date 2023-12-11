@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.cricbuzz.R
 import com.example.cricbuzz.databinding.FragmentSneakerListBinding
 import com.example.cricbuzz.util.setupOnBackPressedCallback
+import com.example.cricbuzz.util.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -57,6 +58,7 @@ class SneakerListFragment : Fragment() {
         }
         onBackPressedCallback = setupOnBackPressedCallback {
             if(binding.searchSneakersEditText.isVisible) {
+                binding.searchSneakersEditText.setText("")
                 binding.searchSneakersEditText.visibility = View.GONE
                 viewModel.getSneakerList()
             }
@@ -68,6 +70,12 @@ class SneakerListFragment : Fragment() {
     private fun setObserver() {
         viewModel.sneakerList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+
+        viewModel.addCart.observe(viewLifecycleOwner) {event->
+            event.getContentIfNotHandled()?.let { str ->
+                showSnackBar(binding.root, str)
+            }
         }
     }
 

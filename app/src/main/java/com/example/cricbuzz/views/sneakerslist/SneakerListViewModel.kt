@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cricbuzz.domain.Sneaker
 import com.example.cricbuzz.repository.SneakersRepository
+import com.example.cricbuzz.util.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +24,8 @@ class SneakerListViewModel @Inject constructor(
     private val _editTextVisibility: MutableLiveData<Boolean> = MutableLiveData(false)
     val editTextVisibility : LiveData<Boolean> = _editTextVisibility
 
+    private val _addCart : MutableLiveData<Event<String>> = MutableLiveData()
+    val addCart : LiveData<Event<String>> = _addCart
     init {
         getSneakerList()
     }
@@ -36,7 +39,8 @@ class SneakerListViewModel @Inject constructor(
 
     fun addToCart(sneaker: Sneaker) {
         viewModelScope.launch(Dispatchers.IO) {
-            sneakersRepository.addToCart(sneaker)
+            val res = sneakersRepository.addToCart(sneaker)
+            _addCart.postValue(Event(res))
             getSneakerList()
         }
     }
@@ -46,7 +50,7 @@ class SneakerListViewModel @Inject constructor(
     }
     fun onUsernameTextChanged(text: CharSequence?) {
         val filteredList = allSneakersLst.filter {
-            it.sneakerName.contains(text.toString())
+            it.sneakerName.lowercase().contains(text.toString())
         }
         _sneakerList.postValue(if(text.toString() == "") allSneakersLst else filteredList)
     }
