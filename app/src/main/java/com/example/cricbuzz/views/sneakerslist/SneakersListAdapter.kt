@@ -29,7 +29,6 @@ class SneakersListAdapter @Inject constructor(val clickListener: ClickListener) 
 
         fun bind(item: Sneaker, clickListener: ClickListener) {
             binding.data = item
-            binding.executePendingBindings()
             binding.clickListener = clickListener
         }
 

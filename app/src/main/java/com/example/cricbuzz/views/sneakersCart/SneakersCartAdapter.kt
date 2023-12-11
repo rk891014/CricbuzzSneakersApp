@@ -63,7 +63,7 @@ class CartClickListener @Inject constructor() {
     var onItemDecrement: ((SneakerCart) -> Unit)? = null
 
     fun onClick(data: Sneaker) {
-        onItemClick?.invoke(data)
+        onItemClick?.invoke(data.copy(alreadyAddedToCart = true))
     }
     fun onRemoveCartClick(data: SneakerCart) {
         onItemRemoveCartClick?.invoke(data)

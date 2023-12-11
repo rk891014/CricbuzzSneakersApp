@@ -82,6 +82,7 @@ class SneakerListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getSneakerList()
+        binding.searchSneakersEditText.visibility = View.GONE
     }
 
     override fun onDestroyView() {
