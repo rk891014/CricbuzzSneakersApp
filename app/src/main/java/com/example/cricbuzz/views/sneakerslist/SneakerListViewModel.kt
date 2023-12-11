@@ -1,7 +1,5 @@
 package com.example.cricbuzz.views.sneakerslist
 
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,8 +36,7 @@ class SneakerListViewModel @Inject constructor(
 
     fun addToCart(sneaker: Sneaker) {
         viewModelScope.launch(Dispatchers.IO) {
-            val res = sneakersRepository.addToCart(sneaker)
-
+            sneakersRepository.addToCart(sneaker)
         }
     }
 

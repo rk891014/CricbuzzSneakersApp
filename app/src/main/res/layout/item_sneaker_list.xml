@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="@{() -> clickListener.onClick(data)}">
 
             <ImageView
@@ -32,6 +33,7 @@
                 android:layout_height="40dp"
                 android:paddingEnd="4dp"
                 android:paddingStart="4dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:onClick="@{() -> clickListener.onAddCartClick(data)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

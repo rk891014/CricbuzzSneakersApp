@@ -1,7 +1,6 @@
 package com.example.cricbuzz.views.sneakerslist
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -54,7 +53,7 @@ class SneakerListFragment : Fragment() {
             viewModel.addToCart(it)
         }
         binding.cartImage.setOnClickListener {
-            findNavController().navigate(SneakerListFragmentDirections.actionSneakersListToSneakerCart())
+            findNavController().navigate(SneakerListFragmentDirections.actionGlobalToSneakerCart())
         }
         onBackPressedCallback = setupOnBackPressedCallback {
             if(binding.searchSneakersEditText.isVisible) {

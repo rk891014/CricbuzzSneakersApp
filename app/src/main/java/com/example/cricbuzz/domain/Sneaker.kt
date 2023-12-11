@@ -25,30 +25,7 @@ data class Sneaker(
     @SerializedName("details")
     val sneakerDetails: String,
     @SerializedName("color")
-    val color: String
+    val color: String,
 
-
-
-//    val box_condition: String,
-//    val category: List<String>,
-//    val collection_slugs: List<String>,
-//    val designer: String,
-//    val details: String,
-//    val gender: List<String>,
-//    val has_picture: Boolean,
-//    val has_stock: Boolean,
-//    val keywords: List<String>,
-//    val midsole: String,
-//    val nickname: String,
-//    val original_picture_url: String,
-//    val product_template_id: Int,
-//    val release_date: String,
-//    val release_date_unix: Int,
-//    val shoe_condition: String,
-//    val silhouette: String,
-//    val sku: String,
-//    val slug: String,
-//    val status: String,
-//    val story_html: String,
-//    val upper_material: String
+    val alreadyAddedToCart : Boolean = false
 ) : Parcelable

@@ -46,6 +46,9 @@ class SneakerDetailsFragment : Fragment() {
         binding.backButton.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.cartImage.setOnClickListener {
+            findNavController().navigate(SneakerDetailsFragmentDirections.actionGlobalToSneakerCart())
+        }
     }
 
 

@@ -9,11 +9,6 @@
         android:id="@+id/sneakers_list"
         android:name="com.example.cricbuzz.views.sneakerslist.SneakerListFragment"
         tools:layout="@layout/fragment_sneaker_list">
-
-        <action
-            android:id="@+id/action_sneakers_list_to_sneaker_cart"
-            app:destination="@id/sneaker_cart">
-        </action>
     </fragment>
 
 
@@ -34,6 +29,10 @@
     </fragment>
 
 
+    <action
+        android:id="@+id/action_global_to_sneaker_cart"
+        app:destination="@id/sneaker_cart">
+    </action>
 
     <action android:id="@+id/action_global_to_sneaker_details"
         app:destination="@id/sneaker_details">
