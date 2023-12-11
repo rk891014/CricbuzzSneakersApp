@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    app:startDestination="@id/sneakers_list">
+
+    <fragment
+        android:id="@+id/sneakers_list"
+        android:name="com.example.cricbuzz.views.sneakerslist.SneakerListFragment"
+        tools:layout="@layout/fragment_sneaker_list">
+
+        <action
+            android:id="@+id/action_sneakers_list_to_sneaker_cart"
+            app:destination="@id/sneaker_cart">
+        </action>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/sneaker_details"
+        android:name="com.example.cricbuzz.views.sneakerDetails.SneakerDetailsFragment"
+        tools:layout="@layout/fragment_sneaker_details">
+        <argument
+            android:name="sneaker"
+            app:argType="com.example.cricbuzz.domain.Sneaker" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/sneaker_cart"
+        android:name="com.example.cricbuzz.views.sneakersCart.SneakersCartFragment"
+        tools:layout="@layout/fragment_sneakers_cart">
+    </fragment>
+
+
+
+    <action android:id="@+id/action_global_to_sneaker_details"
+        app:destination="@id/sneaker_details">
+        <argument
+            android:name="sneaker"
+            app:argType="com.example.cricbuzz.domain.Sneaker" />
+    </action>
+</navigation>
+

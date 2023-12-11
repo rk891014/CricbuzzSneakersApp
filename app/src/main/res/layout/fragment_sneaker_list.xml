@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cricbuzz.views.sneakerslist.SneakerListViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_margin="15dp"
+        android:layout_height="match_parent">
+
+
+
+        <TextView
+            android:id="@+id/sneakership"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SneakerShip"
+            android:layout_marginStart="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/primary_color"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/search_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/sneaker_search_button"
+            app:tint="@color/primary_color"
+            android:onClick="@{(view) -> viewModel.setSearchEditTextVisible(true)}"
+            app:layout_constraintEnd_toStartOf="@+id/cart_image"
+            app:layout_constraintTop_toTopOf="@+id/sneakership"
+            app:layout_constraintBottom_toBottomOf="@+id/sneakership"/>
+
+        <ImageView
+            android:id="@+id/cart_image"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/shopping_cart"
+            app:tint="@color/primary_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sneakership"
+            app:layout_constraintBottom_toBottomOf="@+id/sneakership"/>
+
+        <EditText
+            android:id="@+id/searchSneakersEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/edittext_rounded_corners"
+            android:drawableEnd="@drawable/sneaker_search_button"
+            android:padding="10dp"
+            android:hint="Search Here"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.onUsernameTextChanged(text)}"
+            android:visibility="@{viewModel.editTextVisibility ? view.VISIBLE : view.GONE}"
+            android:drawableTint="@color/primary_color"
+            app:layout_constraintStart_toStartOf="@+id/sneakership"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cart_image"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#f5f5f5"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/sneakership"
+            app:layout_constraintTop_toBottomOf="@+id/sneakership"
+            app:spanCount="2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
