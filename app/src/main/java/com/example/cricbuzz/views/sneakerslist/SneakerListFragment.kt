@@ -43,9 +43,9 @@ class SneakerListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.sneakerList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
-        }
+
+        setObserver()
+
         adapter.clickListener.onItemClick = {
             findNavController().navigate(SneakerListFragmentDirections.actionGlobalToSneakerDetails(it))
         }
@@ -65,7 +65,16 @@ class SneakerListFragment : Fragment() {
         }
     }
 
+    private fun setObserver() {
+        viewModel.sneakerList.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getSneakerList()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

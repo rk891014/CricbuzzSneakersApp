@@ -37,6 +37,7 @@ class SneakerListViewModel @Inject constructor(
     fun addToCart(sneaker: Sneaker) {
         viewModelScope.launch(Dispatchers.IO) {
             sneakersRepository.addToCart(sneaker)
+            getSneakerList()
         }
     }
 

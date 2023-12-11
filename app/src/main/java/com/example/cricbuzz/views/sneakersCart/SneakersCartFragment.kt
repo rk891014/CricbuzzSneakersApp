@@ -46,15 +46,15 @@ class SneakersCartFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
         viewModel.totalPrice.observe(viewLifecycleOwner) {
-            binding.price.text = "$ "+it.toString()
+            binding.price.text = "$ $it"
         }
         adapter.cartClickListener.onItemRemoveCartClick = {
             viewModel.removeSneaker(it.sneaker)
         }
-        adapter.cartClickListener.onItemIncreament = {
+        adapter.cartClickListener.onItemIncrement = {
             viewModel.updateSneakerCounter(it,it.itemCount + 1)
         }
-        adapter.cartClickListener.onItemDecreament = {
+        adapter.cartClickListener.onItemDecrement = {
             viewModel.updateSneakerCounter(it,it.itemCount - 1)
         }
         adapter.cartClickListener.onItemClick = {

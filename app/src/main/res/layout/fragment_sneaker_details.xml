@@ -158,12 +158,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_border"
-                android:backgroundTint="@color/primary_color"
+                android:backgroundTint='@{sneaker.alreadyAddedToCart ? @color/green_color : @color/primary_color}'
                 android:gravity="center"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
-                android:text="Add to Cart"
+                android:text='@{sneaker.alreadyAddedToCart ? "Added To Cart" : "Add To Cart"}'
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 

@@ -2,7 +2,6 @@ package com.example.cricbuzz.util
 
 import android.content.SharedPreferences
 import android.content.res.AssetManager
-import android.util.Log
 import com.example.cricbuzz.domain.Sneaker
 import com.example.cricbuzz.domain.SneakerCart
 import com.example.cricbuzz.domain.SneakerCollection
@@ -16,9 +15,16 @@ object SneakersManager {
     private val gson = Gson()
 
 
-    fun getSneakersData(assetManager: AssetManager) : List<Sneaker>{
+    fun getSneakersData(sharedPreferences: SharedPreferences, assetManager: AssetManager) : List<Sneaker>{
+        initialiseCartMapData(sharedPreferences)
         val jsonString = assetManager.open("SneakersData.json").bufferedReader().use { it.readText() }
-        return Gson().fromJson(jsonString, SneakerCollection::class.java).sneakers
+        val sneakerList = Gson().fromJson(jsonString, SneakerCollection::class.java).sneakers
+        sneakerList.forEach {
+            if(cartDataMap.containsKey(it.id)){
+                it.alreadyAddedToCart = true
+            }
+        }
+        return sneakerList
     }
 
     fun getSneakersCartData(sharedPreferences: SharedPreferences) : List<SneakerCart> {
@@ -31,7 +37,7 @@ object SneakersManager {
         initialiseCartMapData(sharedPreferences)
         try {
             if(cartDataMap.containsKey(sneaker.id))
-                return "AllReady Added"
+                return "Item AllReady Added"
             else {
                 cartDataMap[sneaker.id] = SneakerCart(sneaker, 1)
                 sharedPreferences.edit().putString("myCart", gson.toJson(cartDataMap)).apply()
@@ -40,7 +46,7 @@ object SneakersManager {
             e.message
             return "Something Went Wrong"
         }
-        return "Added SuccessFully"
+        return "Item Added SuccessFully"
     }
 
     private fun initialiseCartMapData(sharedPreferences: SharedPreferences) {

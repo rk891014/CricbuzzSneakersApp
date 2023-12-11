@@ -13,7 +13,7 @@ class SneakersRepositoryImp @Inject constructor(
 ) : SneakersRepository {
 
     override suspend fun getSneakers(): List<Sneaker> {
-        return SneakersManager.getSneakersData(assetManager = assetManager)
+        return SneakersManager.getSneakersData(sharedPreferences = sharedPreferences,assetManager = assetManager)
     }
 
     override suspend fun addToCart(sneaker: Sneaker) : String {

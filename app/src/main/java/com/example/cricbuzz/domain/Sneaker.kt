@@ -26,6 +26,5 @@ data class Sneaker(
     val sneakerDetails: String,
     @SerializedName("color")
     val color: String,
-
-    val alreadyAddedToCart : Boolean = false
+    var alreadyAddedToCart : Boolean = false
 ) : Parcelable

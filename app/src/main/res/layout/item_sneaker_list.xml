@@ -27,7 +27,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:onClick="@{() -> clickListener.onClick(data)}">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/add_cart_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -37,8 +37,8 @@
                 android:onClick="@{() -> clickListener.onAddCartClick(data)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:src="@drawable/add_button"
-                app:tint="@color/primary_color" />
+                android:src="@{data.alreadyAddedToCart ? @drawable/task_added : @drawable/add_button}"
+                />
 
             <ImageView
                 android:id="@+id/sneaker_image"

@@ -1,6 +1,5 @@
 package com.example.cricbuzz.views.sneakersCart
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -60,8 +59,8 @@ class CartClickListener @Inject constructor() {
 
     var onItemRemoveCartClick: ((SneakerCart) -> Unit)? = null
     var onItemClick: ((Sneaker) -> Unit)? = null
-    var onItemIncreament: ((SneakerCart) -> Unit)? = null
-    var onItemDecreament: ((SneakerCart) -> Unit)? = null
+    var onItemIncrement: ((SneakerCart) -> Unit)? = null
+    var onItemDecrement: ((SneakerCart) -> Unit)? = null
 
     fun onClick(data: Sneaker) {
         onItemClick?.invoke(data)
@@ -70,9 +69,9 @@ class CartClickListener @Inject constructor() {
         onItemRemoveCartClick?.invoke(data)
     }
     fun onIncreaseItem(data: SneakerCart) {
-        onItemIncreament?.invoke(data)
+        onItemIncrement?.invoke(data)
     }
     fun onDecreaseItem(data: SneakerCart) {
-        onItemDecreament?.invoke(data)
+        onItemDecrement?.invoke(data)
     }
 }

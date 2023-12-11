@@ -38,7 +38,13 @@ class SneakerDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setClickListeners()
+        setObservers()
     }
+
+    private fun setObservers() {
+
+    }
+
     private fun setClickListeners() {
         binding.addCart.setOnClickListener {
             viewModel.addToCart(args.sneaker)
